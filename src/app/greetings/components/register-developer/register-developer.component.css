@@ -1,0 +1,9 @@
+.error {
+  color: red;
+  font-size: 0.9em;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}

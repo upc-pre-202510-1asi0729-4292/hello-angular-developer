@@ -1,1 +1,30 @@
-<p>register-developer works!</p>
+<h1>New Developer</h1>
+<form [formGroup]="developerForm" (ngSubmit)="onRegister()">
+  <label for="first-name">First Name</label>
+  <input id="first-name" type="text" formControlName="firstName">
+  @if (developerForm.get('firstName')?.touched && developerForm.get('firstName')?.invalid) {
+    @if (developerForm.get('firstName')?.errors?.['required']) {
+      <div class="error">First name is required.</div>
+    }
+    @if (developerForm.get('firstName')?.errors?.['minlength']) {
+      <div class="error">First name must be at least 2 characters.</div>
+    }
+  }
+
+  <label for="last-name">Last Name</label>
+  <input id="last-name" type="text" formControlName="lastName">
+  @if (developerForm.get('lastName')?.touched && developerForm.get('lastName')?.invalid) {
+    @if (developerForm.get('lastName')?.errors?.['required']) {
+      <div class="error">Last name is required.</div>
+    }
+    @if (developerForm.get('lastName')?.errors?.['minlength']) {
+      <div class="error">Last name must be at least 2 characters.</div>
+    }
+  }
+
+  <div class="button-group">
+    <button type="submit" [disabled]="developerForm.invalid">Register</button>
+    <button type="button" (click)="onLater()">Later</button>
+    <button type="button" (click)="onClear()">Clear</button>
+  </div>
+</form>
